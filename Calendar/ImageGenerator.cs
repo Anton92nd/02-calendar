@@ -21,8 +21,7 @@ namespace Calendar
 
 		private static void DrawDays(Bitmap image, Graphics g, Calendar calendar)
 		{
-			bool wasFirst = false;
-			bool wasLast = false;
+			bool wasFirst = false, wasLast = false;
 			for (int i = 0; i < calendar.days.Count; i++)
 			{
 				if (calendar.days[i] == 1 && wasFirst)

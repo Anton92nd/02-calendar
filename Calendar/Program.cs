@@ -11,6 +11,8 @@ namespace Calendar
 	{
 		static void Main()
 		{
+			Console.WriteLine("This program generates calendar page for a given date.\n" +
+					"Input date in one of the following formats:\n" + "DD/MM/YYYY or DD.MM.YYYY");
 			try
 			{
 				var date = DateTime.Parse(Console.ReadLine());
@@ -20,6 +22,10 @@ namespace Calendar
 			catch (FormatException)
 			{
 				Console.WriteLine("Wrong date format");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
 			}
 		}
 	}
