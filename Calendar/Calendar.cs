@@ -8,23 +8,22 @@ namespace Calendar
 {
 	public enum Months
 	{
-		January, February, March, April, May, June, July, August, September, October, November, December
+		January = 1, February, March, April, May, June, July, August, September, October, November, December
 	}
 
 	public class Calendar
 	{
-		private List<int> weeks;
-		private List<int> days; 
-		private int day, year;
-		private Months month;
+		public readonly List<int> weeks, days; 
+		public readonly int day, year;
+		public readonly Months month;
 
 		public Calendar(DateTime date)
 		{
-			this.weeks = GetWeeks(date);
-			this.day = date.Day;
-			this.year = date.Year;
-			this.month = (Months)(date.Month - 1);
-			this.days = GetDays(date, weeks.Count);
+			weeks = GetWeeks(date);
+			day = date.Day;
+			year = date.Year;
+			month = (Months)(date.Month);
+			days = GetDays(date, weeks.Count);
 		}
 
 		private List<int> GetDays(DateTime date, int weeksNumber)
@@ -64,7 +63,7 @@ namespace Calendar
 		static private int GetWeekNumber(DateTime date)
 		{
 			var jan1 = ConvertDayOfWeek(new DateTime(date.Year, 1, 1).DayOfWeek);
-			return (jan1 + date.DayOfYear - 1) / 7;
+			return (jan1 + date.DayOfYear - 1) / 7 + 1;
 		}
 	}
 }
