@@ -13,19 +13,16 @@ namespace Calendar
 		{
 			Console.WriteLine("This program generates calendar page for a given date.\n" +
 					"Input date in one of the following formats:\n" + "DD/MM/YYYY or DD.MM.YYYY");
-			try
+			DateTime date;
+			if (DateTime.TryParse(Console.ReadLine(), out date))
 			{
-				var date = DateTime.Parse(Console.ReadLine());
 				var image = ImageGenerator.GetCalendarImage(new Calendar(date));
 				image.Save("calendar.png", ImageFormat.Png);
+				Console.WriteLine("Successfully generated!");
 			}
-			catch (FormatException)
+			else
 			{
 				Console.WriteLine("Wrong date format");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
 			}
 		}
 	}
